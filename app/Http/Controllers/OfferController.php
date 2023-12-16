@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\OfferRequest;
 
 class OfferController extends Controller
 {
@@ -29,16 +30,16 @@ class OfferController extends Controller
     }
 
 
-      public function store(Request $request)
+      public function store(OfferRequest  $request)
     {
-      $validator=  Validator::make($request->all(),[
-            'name'=>'required|max:255|unique:offers,name',
-            'price'=>'required|numeric',
-            'details'=>'required',
-        ]);
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator)->withInput($request->all());
-        }
+    //   $validator=  Validator::make($request->all(),[
+    //         'name'=>'required|max:255|unique:offers,name',
+    //         'price'=>'required|numeric',
+    //         'details'=>'required',
+    //     ]);
+    //     if($validator->fails()){
+    //         return redirect()->back()->withErrors($validator)->withInput($request->all());
+    //     }
         Offer::create([
 
             'name'=>$request->name,

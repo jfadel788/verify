@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\OfferController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,9 @@ Route::get('/', function () {
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+
+
+Route::group(['prefix'=>'offers'],function(){
+    Route::get('create',[OfferController::class,"create"]);
+    Route::post('store',[OfferController::class,"store"])->name('offers.store');
+});

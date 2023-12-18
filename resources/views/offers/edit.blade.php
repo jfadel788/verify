@@ -27,33 +27,26 @@
           </div>
         @endif
         <br>
-        <form method="Post" action="{{ route('offers.store') }}" enctype="multipart/form-data">
+        <form method="Post" action="{{ route('offers.update',$offer->id) }}">
             @csrf
             <div class="form-group">
               <label for="exampleInputEmail1">Name</label>
-              <input type="text" class="form-control" name="name"  placeholder="name">
+              <input type="text" class="form-control" name="name"  value="{{$offer->name  }}" placeholder="name">
               @error('name')
               <small id="emailHelp" class="form-text text-muted">{{ $message }}</small>
               @enderror
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Price</label>
-              <input type="text" class="form-control" name="price" placeholder="Price">
+              <input type="text" class="form-control" name="price" value="{{ $offer->price }}" placeholder="Price">
               @error('price')
               <small id="emailHelp" class="form-text text-muted">{{ $message }}</small>
               @enderror
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Details</label>
-                <input type="text" class="form-control" name="details" placeholder="Details">
+                <input type="text" class="form-control" name="details" value="{{ $offer->details }}" placeholder="Details">
                 @error('details')
-                <small id="emailHelp" class="form-text text-muted">{{ $message }}</small>
-                @enderror
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Photo</label>
-                <input type="file" class="form-control" name="photo" placeholder="Photo">
-                @error('photo')
                 <small id="emailHelp" class="form-text text-muted">{{ $message }}</small>
                 @enderror
               </div>

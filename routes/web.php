@@ -27,4 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix'=>'offers'],function(){
     Route::get('create',[OfferController::class,"create"]);
     Route::post('store',[OfferController::class,"store"])->name('offers.store');
+    Route::get('all',[OfferController::class,"getAllOffers"]);
+    Route::get('edit/{offer_id}',[OfferController::class,"edit"])->name('offers.edit');
+    Route::post('update/{offer_id}',[OfferController::class,"update"])->name('offers.update');
 });

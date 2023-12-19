@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxOfferController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\VideoControoler;
 use Illuminate\Support\Facades\Route;
@@ -36,3 +37,7 @@ Route::group(['prefix'=>'offers'],function(){
 });
  Route::get('VideoOffer',[VideoControoler::class,"Video"])->name('VideoOffer');
 
+Route::group(['prefix'=>'Ajax-offer'],function(){
+   Route::get('create',[AjaxOfferController::class,"create"])->name('Ajax.create');
+   Route::post('store',[AjaxOfferController::class,"store"])->name('Ajax.store');
+});

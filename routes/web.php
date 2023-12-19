@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\VideoControoler;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +28,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix'=>'offers'],function(){
     Route::get('create',[OfferController::class,"create"]);
     Route::post('store',[OfferController::class,"store"])->name('offers.store');
-    Route::get('all',[OfferController::class,"getAllOffers"]);
+    Route::get('all',[OfferController::class,"getAllOffers"])->name('offers.all');
     Route::get('edit/{offer_id}',[OfferController::class,"edit"])->name('offers.edit');
     Route::post('update/{offer_id}',[OfferController::class,"update"])->name('offers.update');
+    Route::get('delete/{offer_id}',[OfferController::class,"delete"])->name('offers.delete');
+
 });
+ Route::get('VideoOffer',[VideoControoler::class,"Video"])->name('VideoOffer');
+

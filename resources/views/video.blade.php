@@ -4,11 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>All Offers</title>
+        <title>Video</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
         <!-- Styles -->
         <style>
@@ -21,46 +20,14 @@
             }
         </style>
     </head>
-    <body class="antialiased">
-        @if(Session::has('Sucess'))
-        <div class="alert alert-primary" role="alert">
-           {{ Session::get('Sucess') }}
-          </div>
-        @endif
-        <br>
-        @if(Session::has('error'))
-        <div class="alert alert-danger" role="alert">
-           {{ Session::get('error') }}
-          </div>
-        @endif
-        <br>
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Details</th>
-                <th scope="col">Photo</th>
-
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                @foreach($offers as $offer)
-                <th scope="row">{{ $offer->id }}</th>
-                <td>{{ $offer->name }}</td>
-                <td>{{ $offer->price }}</td>
-                <td>{{ $offer->details }}</td>
-                <td><img style="width:90px ;height:90px ;" src="{{ asset('images/offer/'.$offer->photo) }}" ></td>
-
-                <td><a href="{{ route('offers.edit',$offer->id) }}"><button type="button" class="btn btn-primary">Edit</button></a>
-                    <a href="{{ route('offers.delete',$offer->id) }}"><button type="button" class="btn btn-danger">Delete</button></a> </td>
-              </tr>
-              @endforeach
-
-            </tbody>
-          </table>
-
+    <body >
+        <div class="flex-center position-ref full-height">
+           <div class="content">
+        <div class="title m-b-md">
+            Video Viewer ({{ $video->viewers }})
+        </div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/GVNDbTwOSiw?si=qKQDkVw1QsdOqG7T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    </div>
     </body>
 </html>

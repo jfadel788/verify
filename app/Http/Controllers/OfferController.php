@@ -78,5 +78,12 @@ class OfferController extends Controller
         $offer->update($request->all());
         return redirect()->back()->with(['Sucess'=>'the offer is updated']);
      }
+     public function  delete($offer_id){
+        $offer= Offer::find($offer_id);
+        if(!$offer) return redirect()->back()->with(['error'=>'the offer is not exist']);
+        $offer->delete();
+        return redirect()->route('offers.all')->with(['Sucess'=>'the offer is deleted']);
+
+     }
 
 }

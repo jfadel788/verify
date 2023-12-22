@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AjaxOfferController;
+use App\Http\Controllers\Auth\CheckAgeController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\VideoControoler;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,4 +43,22 @@ Route::group(['prefix'=>'offers'],function(){
 Route::group(['prefix'=>'Ajax-offer'],function(){
    Route::get('create',[AjaxOfferController::class,"create"])->name('Ajax.create');
    Route::post('store',[AjaxOfferController::class,"store"])->name('Ajax.store');
+   Route::get('all',[AjaxOfferController::class,"show"])->name('Ajax.all');
+   Route::post('delete',[AjaxOfferController::class,"delete"])->name('Ajax.delete');
+   Route::get('edit/{offer_id}',[AjaxOfferController::class,"edit"])->name('Ajax.edit');
+   Route::post('update',[AjaxOfferController::class,"update"])->name('Ajax.update');
 });
+
+#####################################MideleWare###################################
+Route::get('notAllowed',function(){
+   return "Not Adult";
+})->name('NotAllowed');
+Route::group(['namespace'=>'Auth','middleware'=>'CheckAge'],function(){
+    Route::get('adult',[CheckAgeController::class,'adult'])->name('adult');
+
+
+});
+Route::get('site',[AdminController::class,"site"])->middleware('auth:web')->name('site');
+Route::get('admin',[AdminController::class,'admin'])->middleware('auth:admin')->name('admin');
+Route::get('admin/login',[AdminController::class,'adminlogin'])->name('admin.login');
+Route::post('checkAdmin',[AdminController::class,'CheckAdminlogin'])->name('save.admin.login');

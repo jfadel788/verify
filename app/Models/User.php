@@ -24,11 +24,13 @@ class User extends Authenticatable implements MustVerifyEmail
         "email",
         "password",
         "mobile",
-        "expire"
+        "expire",
+        "age"
+
 
     ];
 
-    /**
+    /**,
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>

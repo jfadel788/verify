@@ -52,7 +52,7 @@
                 <td>{{ $offer->name }}</td>
                 <td>{{ $offer->price }}</td>
                 <td>{{ $offer->details }}</td>
-                <td><img style="width:90px ;height:90px ;" src="{{ asset('images/offer/'.$offer->photo) }}" ></td>
+                <td><img style="width:90% ;height:90%;" src="{{ asset('public/images/offer/'.$offer->photo) }}" ></td>
 
                 <td><a href="{{ route('offers.edit',$offer->id) }}"><button type="button" class="btn btn-primary">Edit</button></a>
                     <a href="{{ route('offers.delete',$offer->id) }}"><button type="button" class="btn btn-danger">Delete</button></a> </td>
